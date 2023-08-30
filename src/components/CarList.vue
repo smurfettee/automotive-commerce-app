@@ -6,7 +6,8 @@
             SearchInput variable changes.-->
             <CarInList v-bind:key="index" 
             v-for="(car, index) in cars.filter(car => car.make.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()) || car.model.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()))" 
-            :maker="car.make" :model="car.model" :price="car.price"/>
+            :maker="car.make" :model="car.model" :price="car.price"
+            :description="car.description" :features="car.features" :mileage="car.mileage"/>
         </div>
     </main>
 </template>
