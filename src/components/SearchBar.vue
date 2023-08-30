@@ -9,9 +9,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: "SearchBar",
-    props: {
-        test: String,
-    },
     data() {
         return {
             searchInput: this.test,
