@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full flex justify-center p-10 shadow-sm">
+    <header class="w-full flex justify-center p-10">
         <input class="p-2 text-xl w-11/12 border-2 border-gray-400" v-model="searchInput" type="text" id="searchBar" placeholder="Search for cars...">
     </header>
 </template>
@@ -11,9 +11,13 @@ export default defineComponent({
     name: "SearchBar",
     data() {
         return {
-            searchInput: this.test,
+            searchInput: "",
         }
     },
-    
+    watch: {
+        searchInput() {
+            this.$store.commit("setSearchInput", this.searchInput);
+        }
+    }
 });
 </script>

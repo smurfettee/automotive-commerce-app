@@ -1,12 +1,11 @@
 <template>
-    <article>
-        <div>
-            <div>
-                <div>{{ maker }}</div>
-                <div>{{ model }}</div>
+    <article class="w-11/12 flex justify-center transition-colors">
+        <a class="flex w-11/12 m-2 p-5 bg-[#d22a41] items-center justify-between text-white text-lg cursor-pointer hover:bg-[#eb5368] duration-200">
+            <div class="">
+                {{ maker }} | {{ model }}
             </div>
-            <div>{{ price }}</div>
-        </div>
+            <div>{{ price?.toLocaleString() }}€</div>
+        </a>
     </article>
 </template>
 
@@ -18,6 +17,6 @@ export default defineComponent({
         maker: String,
         model: String,
         price: Number,
-    }
+    },
 });
 </script>
