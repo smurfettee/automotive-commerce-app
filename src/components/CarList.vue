@@ -1,6 +1,8 @@
 <template>
-    <main class="flex flex-col items-center ">
-        <CarInList v-bind:key="index" v-for="(car, index) in cars" :maker="car.make" :model="car.model" :price="car.price"/>
+    <main class="flex flex-col items-center h-[70%]">
+        <div class="flex flex-col items-center overflow-auto w-11/12 relative left-1">
+            <CarInList v-bind:key="index" v-for="(car, index) in cars" :maker="car.make" :model="car.model" :price="car.price"/>
+        </div>
     </main>
 </template>
 

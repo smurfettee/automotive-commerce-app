@@ -1,8 +1,8 @@
 <template>
-    <article class="w-11/12 flex justify-center transition-colors">
-        <a v-bind:href="`/#/` + maker" class="flex w-11/12 m-2 p-5 bg-[#d22a41] items-center justify-between text-white text-lg cursor-pointer hover:bg-[#eb5368] duration-200">
+    <article class="w-full flex justify-center transition-colors">
+        <a href="/#/car" class="flex w-[95%] m-2 p-5 bg-[#d22a41] items-center justify-between text-white text-lg cursor-pointer hover:bg-[#eb5368] duration-200">
             <div class="">
-                {{ maker }} | {{ model }}
+                <span class="font-bold">{{ maker }}</span> | {{ model }}
             </div>
             <div>{{ price?.toLocaleString() }}€</div>
         </a>
