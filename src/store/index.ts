@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 
 interface carDetails {
-  maker: string,
+  make: string,
   model: string,
   price: number,
   description: string,
@@ -12,7 +12,7 @@ interface carDetails {
 export default createStore({
   state: {
     searchInput: "" as string,
-    carDetails: {} as carDetails,
+    carDetails: {} as carDetails, // I dont know if this is the right way of declaring (ask)
   },
   getters: {
   },

@@ -1,6 +1,6 @@
 <template>
     <header class="w-full flex justify-center p-10">
-        <input class="p-2 text-xl w-11/12 border-2 border-gray-400" v-model="searchInput" type="text" id="searchBar" placeholder="Search for cars...">
+        <input class="p-2 text-xl w-11/12 border-2 border-gray-400 max-w-lg" v-model="searchInput" type="text" id="searchBar" placeholder="Search for cars...">
     </header>
 </template>
 

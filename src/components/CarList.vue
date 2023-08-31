@@ -1,13 +1,14 @@
 <template>
     <main class="flex flex-col items-center h-[70%]">
-        <div class="flex flex-col items-center overflow-auto w-11/12 relative left-1">
+        <div class="flex flex-col items-center overflow-auto w-11/12 relative left-1 max-w-2xl">
             <!-- In the component below, for every item inside the cars array we are creating
             a CarInList component. Also simultaneously filtering the cars array whenever the
             SearchInput variable changes.-->
             <CarInList v-bind:key="index" 
             v-for="(car, index) in cars.filter(car => car.make.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()) || car.model.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()))" 
             :maker="car.make" :model="car.model" :price="car.price"
-            :description="car.description" :features="car.features" :mileage="car.mileage"/>
+            :description="car.description" :features="car.features" :mileage="car.mileage"
+            :car="car"/>
         </div>
     </main>
 </template>

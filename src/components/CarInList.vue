@@ -2,34 +2,42 @@
     <article class="w-full flex justify-center transition-colors">
         <a @click="setCarView" href="/#/car" class="flex w-[95%] m-2 p-5 bg-[#d22a41] items-center justify-between text-white text-lg cursor-pointer hover:bg-[#eb5368] duration-200">
             <div class="">
-                <span class="font-bold">{{ maker }}</span> | {{ model }}
+                <span class="font-bold">{{ car?.make }}</span> | {{ car?.model }}
             </div>
-            <div>{{ price?.toLocaleString() }}€</div>
+            <div>{{ car?.price.toLocaleString() }}€</div>
         </a>
     </article>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+
+interface ChildProps {
+  item: { 
+        id: number,
+        make: string,
+        model: string,
+        price: number,
+        description: string,
+        features: string,
+        mileage: number 
+    };
+}
+
 export default defineComponent({
     name: "CarInList",
     props: {
-        maker: String,
-        model: String,
-        price: Number,
-        description: String,
-        features: String,
-        mileage: Number
+        car: Object as PropType<ChildProps['item']>
     },
     methods: {
         setCarView() {
             this.$store.commit("setCarDetails", {
-                maker: this.maker,
-                model: this.model,
-                price: this.price,
-                description: this.description,
-                features: this.features,
-                mileage: this.mileage
+                make: this.car?.make,
+                model: this.car?.model,
+                price: this.car?.price,
+                description: this.car?.description,
+                features: this.car?.features,
+                mileage: this.car?.mileage
             });
         }
     }
