@@ -1,18 +1,22 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import { PropType } from 'vue';
 
 interface carDetails {
-  make: string,
-  model: string,
-  price: number,
-  description: string,
-  features: string,
-  mileage: number
+  item: { 
+    id: number,
+    make: string,
+    model: string,
+    price: number,
+    description: string,
+    features: string,
+    mileage: number 
+  };
 }
 
 export default createStore({
   state: {
     searchInput: "" as string,
-    carDetails: {} as carDetails, // I dont know if this is the right way of declaring (ask)
+    carDetails: Object as PropType<carDetails['item']>,
   },
   getters: {
   },
@@ -20,7 +24,7 @@ export default createStore({
     setSearchInput(state, data: string){
       state.searchInput = data;
     },
-    setCarDetails(state, data: carDetails){
+    setCarDetails(state, data: PropType<carDetails['item']>){
       state.carDetails = data;
     }
   },
@@ -28,4 +32,4 @@ export default createStore({
   },
   modules: {
   }
-})
+});

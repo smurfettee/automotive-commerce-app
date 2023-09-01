@@ -13,7 +13,7 @@
 import { defineComponent, PropType } from 'vue';
 
 interface ChildProps {
-  item: { 
+    item: { 
         id: number,
         make: string,
         model: string,
@@ -25,20 +25,13 @@ interface ChildProps {
 }
 
 export default defineComponent({
-    name: "CarInList",
+    name: "CarSingle",
     props: {
         car: Object as PropType<ChildProps['item']>
     },
     methods: {
         setCarView() {
-            this.$store.commit("setCarDetails", {
-                make: this.car?.make,
-                model: this.car?.model,
-                price: this.car?.price,
-                description: this.car?.description,
-                features: this.car?.features,
-                mileage: this.car?.mileage
-            });
+            this.$store.commit("setCarDetails", this.car);
         }
     }
 });

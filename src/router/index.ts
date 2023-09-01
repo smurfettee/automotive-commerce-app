@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/car',
-    name: 'carView',
+    name: 'carDetail',
     component: CarView
   }
 ]

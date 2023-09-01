@@ -4,26 +4,29 @@
             <!-- In the component below, for every item inside the cars array we are creating
             a CarInList component. Also simultaneously filtering the cars array whenever the
             SearchInput variable changes.-->
-            <CarInList v-bind:key="index" 
-            v-for="(car, index) in cars.filter(car => car.make.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()) || car.model.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()))" 
-            :maker="car.make" :model="car.model" :price="car.price"
-            :description="car.description" :features="car.features" :mileage="car.mileage"
-            :car="car"/>
+            <CarSingle v-for="(car, index) in filtered(cars)" 
+                v-bind:key="index" 
+                :car="car"
+            />
+        </div>
+        <div v-if="filtered(cars).length == 0 &&  searchInput != ''">
+            Couldn't find for {{ searchInput }}
         </div>
     </main>
 </template>
 
 <script lang="ts">
 import { defineComponent} from 'vue';
-import CarInList from './CarInList.vue';
+import CarSingle from './CarSingle.vue';
 import axios from "axios";
 
 export default defineComponent({
     name: "CarList",
-    components: { CarInList },
+    components: { CarSingle },
     data() {
         return {
             // An array of objects containing the following attributes.
+            // The response of the fetch is stored in this variable.
             cars: [] as {id: number, make: string, model: string, price: number, description: string, features: string, mileage: number}[],
         }
     },
@@ -37,7 +40,18 @@ export default defineComponent({
 				console.log(e);
 			});
 		},
+        // Filters the cars array for the current searchInput value.
+        filtered(event: Array<{ id: number, make: string, model: string, price: number, description: string, features: string, mileage: number }>) {
+
+            /* 
+            This piece of code checks if the searchInput value is inside the make attribute
+            then checks if it's inside the model attribute and finally checks if its inside both
+            of those attributes. Then filters the car list accordingly.
+            */
+            return event.filter(car => car.make.toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase().trim()) || car.model.toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase().trim()) || (car.make.toLocaleLowerCase() + " " + car.model.toLocaleLowerCase()).includes(this.searchInput.toLocaleLowerCase().trim()));
+        }
 	},
+    // Fetches the data before the render.
 	beforeMount() {
 		this.getData()
 	},

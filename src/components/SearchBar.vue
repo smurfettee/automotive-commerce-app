@@ -15,6 +15,7 @@ export default defineComponent({
         }
     },
     watch: {
+        // Whenever the searchInput changes, updates the searchInput value inside the store.
         searchInput() {
             this.$store.commit("setSearchInput", this.searchInput);
         }
