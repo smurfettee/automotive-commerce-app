@@ -8,7 +8,7 @@
             </div>
             <div class="[&>div]:m-5 md:w-3/6 md:flex md:flex-col md:justify-center md:text-left">
                 <div class="text-lg">{{ $store.state.carDetails.description }}</div>
-                <div class="text-xl font-semibold">{{ $store.state.carDetails.features }}</div>
+                <div class="text-xl font-semibold">{{ $store.state.carDetails.features }}<div class="text-sm text-[#444444]">Features</div></div>
                 <div>
                     <div class="font-bold text-xl">{{ $store.state.carDetails.mileage }}km</div>
                     <div class="text-[#444444] text-sm font-semibold">Mileage</div>
