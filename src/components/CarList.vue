@@ -41,14 +41,18 @@ export default defineComponent({
 			});
 		},
         // Filters the cars array for the current searchInput value.
-        filtered(event: Array<{ id: number, make: string, model: string, price: number, description: string, features: string, mileage: number }>) {
+        filtered(cars: Array<{ id: number, make: string, model: string, price: number, description: string, features: string, mileage: number }>) {
+            // To make the code faster, if searchInput is an empty string it doesn't filter.
+            if (this.searchInput == "") {
+                return cars;
+            }
 
             /* 
             This piece of code checks if the searchInput value is inside the make attribute
             then checks if it's inside the model attribute and finally checks if its inside both
             of those attributes. Then filters the car list accordingly.
             */
-            return event.filter(car => car.make.toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase().trim()) || car.model.toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase().trim()) || (car.make.toLocaleLowerCase() + " " + car.model.toLocaleLowerCase()).includes(this.searchInput.toLocaleLowerCase().trim()));
+            return cars.filter(car => car.make.toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase().trim()) || car.model.toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase().trim()) || (car.make.toLocaleLowerCase() + " " + car.model.toLocaleLowerCase()).includes(this.searchInput.toLocaleLowerCase().trim()));
         }
 	},
     // Fetches the data before the render.

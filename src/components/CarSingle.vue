@@ -30,6 +30,7 @@ export default defineComponent({
         car: Object as PropType<ChildProps['item']>
     },
     methods: {
+        // Sets the carView components details through the store.
         setCarView() {
             this.$store.commit("setCarDetails", this.car);
         }
